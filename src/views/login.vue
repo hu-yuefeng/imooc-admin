@@ -7,7 +7,8 @@
       :model="loginForm"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t("msg.login.title") }}</h3>
+        <LangSelect class="loginLangSelect" />
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -44,34 +45,50 @@
         @click="handleLogin"
         class="login-btn"
         :loading="loading"
-        >Submit</el-button
+        >{{ $t("msg.login.loginBtn") }}</el-button
       >
+
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
 import SvgIcon from "@/components/SvgIcon";
+import LangSelect from "@/components/langSelect";
 import { ElMessage } from "element-plus";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 const loginForm = ref({
   username: "super-admin",
   password: "123456",
 });
+const i18n = useI18n();
+const validatePassword = () => {
+  return (rule, value, callback) => {
+    if (value.length < 6) {
+      callback(new Error(i18n.t("msg.login.passwordRule")));
+    } else {
+      callback();
+    }
+  };
+};
 const rules = ref({
   username: [
     {
       required: true,
-      message: "此为必填项",
       trigger: "change",
+      message: computed(() => {
+        return i18n.t("msg.login.usernameRule");
+      }),
     },
   ],
   password: [
     {
       required: true,
-      message: "此为必填项",
-      trigger: "change",
+      trigger: "blur",
+      validator: validatePassword(),
     },
   ],
 });
@@ -157,18 +174,18 @@ $cursor: #fff;
     }
   }
 
-  // .tips {
-  //   font-size: 16px;
-  //   line-height: 28px;
-  //   color: #fff;
-  //   margin-bottom: 10px;
+  .tips {
+    font-size: 16px;
+    line-height: 28px;
+    color: #fff;
+    margin-bottom: 10px;
 
-  //   // span {
-  //   //   &:first-of-type {
-  //   //     margin-right: 16px;
-  //   //   }
-  //   // }
-  // }
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
 
   .svg-container {
     padding: 6px 5px 6px 15px;
@@ -179,7 +196,15 @@ $cursor: #fff;
 
   .title-container {
     position: relative;
-
+    ::v-deep .loginLangSelect {
+      background-color: #fff;
+      border-radius: 2px;
+      padding: 3px;
+      position: absolute;
+      font-size: 26px;
+      top: 0;
+      right: 0;
+    }
     .title {
       font-size: 26px;
       color: $light_gray;

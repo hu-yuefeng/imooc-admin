@@ -1,9 +1,9 @@
 <template>
   <el-menu
     :unique-opened="true"
-    :background-color="variables.menuBg"
-    :text-color="variables.menuText"
-    :active-text-color="variables.menuActiveText"
+    :background-color="$store.getters.cssVar.menuBg"
+    :text-color="$store.getters.cssVar.menuText"
+    :active-text-color="$store.getters.cssVar.menuActiveText"
     router
     :collapse="!$store.getters.sidebarOpened"
     :default-active="activeMenu"

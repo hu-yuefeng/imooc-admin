@@ -7,7 +7,7 @@
     <SideBar
       class="sidebar-container"
       :style="{
-        backgroundColor: variables.menuBg,
+        backgroundColor: $store.getters.cssVar.menuBg,
       }"
     />
     <div class="main-container">

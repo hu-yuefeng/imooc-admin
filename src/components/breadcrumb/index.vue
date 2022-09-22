@@ -1,22 +1,25 @@
 <template>
   <el-breadcrumb class="breadcrumb" separator="/">
-    <el-breadcrumb-item
-      v-for="(item, index) in breadCrumbData"
-      :key="item.path"
-    >
-      <span class="no-redirect" v-if="index === breadCrumbData.length - 1">
-        {{ item.meta.title }}
-      </span>
-      <span class="redirect" @click="onLickClick(item)" v-else>{{
-        item.meta.title
-      }}</span>
-    </el-breadcrumb-item>
+    <transition-group name="breadcrumb">
+      <el-breadcrumb-item
+        v-for="(item, index) in breadCrumbData"
+        :key="item.path"
+      >
+        <span class="no-redirect" v-if="index === breadCrumbData.length - 1">
+          {{ generateTitle(item.meta.title) }}
+        </span>
+        <span class="redirect" @click="onLickClick(item)" v-else>{{
+          generateTitle(item.meta.title)
+        }}</span>
+      </el-breadcrumb-item>
+    </transition-group>
   </el-breadcrumb>
 </template>
 
 <script setup>
 import { watch, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { generateTitle } from "@/utils/i18n.js";
 const route = useRoute();
 const breadCrumbData = ref([]);
 const getBreadCrumbData = () => {

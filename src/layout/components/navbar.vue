@@ -5,6 +5,10 @@
       <BreadCrumb class="breadcrumb-container" />
     </div>
     <div class="right-menu">
+      <HeaderSearch class="right-menu-item hover-effect" />
+      <Screenfull class="right-menu-item hover-effect" />
+      <ThemeChange class="right-menu-item hover-effect" />
+      <LangSelect class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container">
         <div class="avator-warpper">
@@ -18,14 +22,14 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dorpdown">
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t("msg.navBar.home") }}</el-dropdown-item>
             </router-link>
             <a href="#" target="__blank">
-              <el-dropdown-item>课程主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t("msg.navBar.course") }}</el-dropdown-item>
             </a>
-            <el-dropdown-item divided @click="logout"
-              >退出登录</el-dropdown-item
-            >
+            <el-dropdown-item divided @click="logout">{{
+              $t("msg.navBar.logout")
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -38,6 +42,10 @@ import {} from "vue";
 import { useStore } from "vuex";
 import Hamburger from "./hamburger/index.vue";
 import BreadCrumb from "@/components/breadcrumb/index.vue";
+import LangSelect from "@/components/langSelect";
+import ThemeChange from "@/components/themeSelect";
+import Screenfull from "@/components/screenfull";
+import HeaderSearch from "@/components/headerSearch";
 const store = useStore();
 const logout = () => {
   store.dispatch("user/logout");
@@ -59,6 +67,17 @@ const logout = () => {
     align-items: center;
     justify-content: right;
     padding-right: 16px;
+    ::v-deep .right-menu-item {
+      display: inline-block;
+      padding: 0 18px 0 0;
+      font-size: 24px;
+      vertical-align: text-bottom;
+      color: #5a5e66;
+
+      .hover-effect {
+        cursor: pointer;
+      }
+    }
   }
   .left-menu {
     line-height: 46px;
