@@ -21,7 +21,8 @@
 </template>
 
 <script setup>
-import {} from "vue";
+import { ref } from "vue";
+const currentPage1 = ref(1);
 </script>
 
 <style lang="scss" scoped></style>

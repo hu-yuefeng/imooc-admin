@@ -34,7 +34,7 @@ defineProps({
     type: String,
     default: "dark",
     validate: function (value) {
-      return ["dark", "light"].indexOf(value) !== -1;
+      return ["dark", "light"].includes(value);
     },
   },
 });

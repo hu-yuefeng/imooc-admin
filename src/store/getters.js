@@ -18,5 +18,6 @@ const getters = {
     ...state.theme.getColor,
     ...generateColors(getItem(MAIN_COLOR)),
   }),
+  tagsViewList: (state) => state.app.tagsViewList,
 };
 export default getters;

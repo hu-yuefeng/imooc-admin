@@ -26,7 +26,7 @@
 import { computed, ref, watch } from "vue";
 import SvgIcon from "@/components/SvgIcon";
 import { useRoute, useRouter } from "vue-router";
-import { filterRouters, generateMenus } from "@/utils/route";
+import { filterRouters } from "@/utils/route";
 import Fuse from "fuse.js";
 import { generateRoutes } from "./FuseData";
 import { login } from "@/api/sys";

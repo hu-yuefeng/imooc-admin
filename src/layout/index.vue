@@ -14,9 +14,8 @@
       <div class="fixed-head">
         <NavBar />
       </div>
-      <div>
-        <AppMain />
-      </div>
+      <TagsViewList />
+      <AppMain />
     </div>
   </div>
 </template>
@@ -26,6 +25,7 @@ import NavBar from "./components/navbar.vue";
 import SideBar from "./components/sidebar";
 import AppMain from "./components/AppMain.vue";
 import variables from "@/styles/variables.module.scss";
+import TagsViewList from "@/components/tagsView";
 
 import {} from "vue";
 </script>
@@ -40,6 +40,7 @@ import {} from "vue";
   height: 100%;
 }
 .fixed-head {
+  display: contents;
   position: fixed;
   top: 0;
   right: 0;
