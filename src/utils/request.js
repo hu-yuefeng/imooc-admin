@@ -27,6 +27,8 @@ service.interceptors.request.use((config) => {
   // 添加 icode
   config.headers.icode = "34785B46B360B444";
   // 必须返回 config
+  // 配置国际化语言
+  config.headers["Accept-Language"] = store.getters.language;
   return config;
 });
 // 相应拦截器

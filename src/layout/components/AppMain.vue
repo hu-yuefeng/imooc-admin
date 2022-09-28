@@ -68,7 +68,8 @@ watch(
   max-height: calc(100vh - 50px);
   width: 100%;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
+  margin-top: 85px;
   padding: 10px 20px 20px 20px;
   box-sizing: border-box;
 }

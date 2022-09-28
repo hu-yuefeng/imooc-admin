@@ -5,6 +5,7 @@
   >
     <!-- 左侧menu -->
     <SideBar
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{
         backgroundColor: $store.getters.cssVar.menuBg,
@@ -13,8 +14,8 @@
     <div class="main-container">
       <div class="fixed-head">
         <NavBar />
+        <TagsViewList id="guide-tags" class="tags" />
       </div>
-      <TagsViewList />
       <AppMain />
     </div>
   </div>
@@ -40,7 +41,6 @@ import {} from "vue";
   height: 100%;
 }
 .fixed-head {
-  display: contents;
   position: fixed;
   top: 0;
   right: 0;

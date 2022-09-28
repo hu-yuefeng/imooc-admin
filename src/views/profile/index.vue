@@ -1,28 +1,47 @@
 <template>
-  <div class="">
-    <el-row class="mb-4">
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
+  <div class="my-container">
+    <el-row>
+      <el-col :span="6">
+        <ProjectCard class="project-card" :featureData="featureData" />
+      </el-col>
+      <el-col :span="18">
+        <el-card>
+          <el-tabs v-model="activeName">
+            <el-tab-pane :label="$t('msg.profile.feature')" name="feature">
+              <Feature />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
+              <Chapter />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.author')" name="author">
+              <Auther />
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+      </el-col>
     </el-row>
-    <el-pagination
-      v-model:currentPage="currentPage1"
-      :page-size="100"
-      :small="small"
-      :disabled="disabled"
-      :background="background"
-      layout="total, prev, pager, next"
-      :total="1000"
-    />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-const currentPage1 = ref(1);
+import Auther from "./components/Auther.vue";
+import Chapter from "./components/chapter.vue";
+import Feature from "./components/Feature.vue";
+import ProjectCard from "./components/projectCard.vue";
+import { feature } from "@/api/user";
+import { watchSwitchLang } from "@/utils/i18n";
+const activeName = ref("feature");
+const featureData = ref([]);
+const getFeatureData = async () => {
+  featureData.value = await feature();
+};
+getFeatureData();
+watchSwitchLang(getFeatureData);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.project-card {
+  margin-right: 20px;
+}
+</style>

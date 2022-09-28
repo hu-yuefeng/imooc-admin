@@ -2,9 +2,10 @@
   <div class="navbar">
     <div class="left-group">
       <Hamburger class="left-menu" />
-      <BreadCrumb class="breadcrumb-container" />
+      <BreadCrumb id="guide-breadcrumb" class="breadcrumb-container" />
     </div>
     <div class="right-menu">
+      <Guide class="right-menu-item hover-effect" />
       <HeaderSearch class="right-menu-item hover-effect" />
       <Screenfull class="right-menu-item hover-effect" />
       <ThemeChange class="right-menu-item hover-effect" />
@@ -46,6 +47,7 @@ import LangSelect from "@/components/langSelect";
 import ThemeChange from "@/components/themeSelect";
 import Screenfull from "@/components/screenfull";
 import HeaderSearch from "@/components/headerSearch";
+import Guide from "@/components/Guide";
 const store = useStore();
 const logout = () => {
   store.dispatch("user/logout");
