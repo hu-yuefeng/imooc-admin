@@ -42,7 +42,7 @@
       <!-- 项目功能 -->
       <div class="project-bio-section">
         <div class="project-bio-section-header">
-          <SvgIcon icon="introduce" />
+          <SvgIcon icon="reward" />
           <span>{{ $t("msg.profile.projectFunction") }}</span>
         </div>
         <div class="project-bio-section-body">
@@ -77,6 +77,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .user-container {
+  margin-bottom: 10px;
   .text-muted {
     font-size: 14px;
     color: #777;

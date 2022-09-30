@@ -8,8 +8,11 @@ import i18n from "@/i18n";
 import "@/styles/index.scss";
 import installIcons from "@/icons";
 import "./permission";
-
-createApp(App)
+// 全剧属性
+import installFilter from "@/filters";
+const app = createApp(App);
+installFilter(app);
+app
   .use(store)
   .use(router)
   .use(installElementPlus)

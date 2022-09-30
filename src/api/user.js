@@ -4,3 +4,10 @@ export const feature = () => {
     url: "/user/feature",
   });
 };
+// 获取章节
+export const chapter = () => {
+  return request({
+    url: "/user/chapter",
+    method: "get",
+  });
+};

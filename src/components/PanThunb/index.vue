@@ -50,6 +50,9 @@ defineProps({
     border-radius: 50%;
     overflow: hidden;
     box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .pan-info h3 {
     color: #fff;
@@ -69,7 +72,7 @@ defineProps({
     padding: 10px 5px;
     font-style: italic;
     margin: 0 30px;
-    font-size: 12px;
+    font-size: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
   }
 
@@ -110,12 +113,12 @@ defineProps({
     border-radius: 50%;
     overflow: hidden;
     position: absolute;
-    transform-origin: 95% 40%;
+    transform-origin: 100% 55%;
     transition: all 0.3s ease-in-out;
   }
 }
 .pan-item:hover .pan-thumb {
-  transform: rotate(-110deg);
+  transform: rotate(-100deg);
 }
 
 .pan-item:hover .pan-info p a {

@@ -34,7 +34,10 @@ service.interceptors.request.use((config) => {
 // 相应拦截器
 service.interceptors.response.use(
   (response) => {
-    const { data, success, message } = response.data;
+    const {
+      data,
+      data: { success, message },
+    } = response;
     // 判断当前请求是否成功
     if (success) {
       // 成功返回解析后端数据

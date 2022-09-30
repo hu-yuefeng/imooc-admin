@@ -28,12 +28,12 @@ export default {
           username,
           password: md5(password),
         })
-          .then((data) => {
-            this.commit("user/setToken", data.token);
+          .then((res) => {
+            this.commit("user/setToken", res.data.token);
             router.push("/");
             // 保存登录时间
             setTimeStamp();
-            resolve();
+            resolve(res);
           })
           .catch((err) => {
             reject(err);
@@ -42,7 +42,7 @@ export default {
     },
     async getUserInfo() {
       const res = await getUserInfo();
-      this.commit("user/setUserInfo", res);
+      this.commit("user/setUserInfo", res.data);
       return res;
     },
 

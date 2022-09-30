@@ -113,7 +113,6 @@ const handleLogin = () => {
     store
       .dispatch("user/login", loginForm.value)
       .then((res) => {
-        console.log(res);
         const { message, code } = res;
         loading.value = false;
         ElMessage({
@@ -122,7 +121,6 @@ const handleLogin = () => {
         });
       })
       .catch((err) => {
-        console.log(err);
         loading.value = false;
       });
   });
