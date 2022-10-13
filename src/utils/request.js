@@ -25,7 +25,7 @@ service.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${store.getters.token}`;
   }
   // 添加 icode
-  config.headers.icode = "34785B46B360B444";
+  config.headers.icode = "C8A64AEFC0677FBB";
   // 必须返回 config
   // 配置国际化语言
   config.headers["Accept-Language"] = store.getters.language;

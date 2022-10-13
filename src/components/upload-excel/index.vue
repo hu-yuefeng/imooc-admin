@@ -28,6 +28,7 @@ import { ElMessage } from "element-plus";
 import { ref, defineProps } from "vue";
 import XLSX from "xlsx";
 import { getHeaderRow, isExcel } from "./utils";
+
 const props = defineProps({
   // 上传之前的回调
   beforeUpload: Function,
@@ -40,7 +41,7 @@ const handleUpload = () => {
   excelUploadInput.value.click();
 };
 const handleChange = (e) => {
-  console.log(e);
+  // console.log(e);
   const files = e.target.files;
   const rawFile = files[0];
   console.log(rawFile);
@@ -82,6 +83,8 @@ const readerDate = (rawFile) => {
       // 6、解析数据表体
       const result = XLSX.utils.sheet_to_json(workSheet);
       // 7、传入解析之后对数据
+      // handleTime(result);
+      console.log(result);
       generateData({ header, result });
       // 8、处理loading
       loading.value = false;
@@ -96,7 +99,16 @@ const readerDate = (rawFile) => {
 const generateData = (excelData) => {
   props.onSuccess && props.onSuccess(excelData);
 };
-
+//处理时间戳
+const handleTime = (data) => {
+  const key = "开通时间";
+  data.map((item) => {
+    console.log(item[key]);
+    item[key] = new Date(item[key]).getTime();
+    // formatDate(item[key]);
+    // item[key] = new Date(item[key]).getTime().toString();
+  });
+};
 // 拖拽事件
 const handleDrop = (e) => {
   // 上传中

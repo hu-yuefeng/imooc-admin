@@ -29,7 +29,7 @@ const generateData = (res) => {
   res.forEach((item) => {
     let userInfo = {};
     Object.keys(item).forEach((v) => {
-      if (userInfo[USER_RELATIONS[v]] === "openTime") {
+      if (USER_RELATIONS[v] === "openTime") {
         userInfo[USER_RELATIONS[v]] = formatDate(item[v]);
         return;
       }
