@@ -77,11 +77,14 @@
 
 <script setup>
 import { ref, onActivated, onMounted, nextTick } from "vue";
-import { getArticleList } from "@/api/aiticle";
+import { getArticleList, delArticle } from "@/api/aiticle";
 import { watchSwitchLang } from "@/utils/i18n";
 import { dateFilter } from "@/filters/index";
 import { tableColumns, selectDynamicLabel, dynamicData } from "./dynamic/index";
 import { tableRef, initSortable } from "./sortable";
+import { ElMessageBox, ElMessage } from "element-plus";
+import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
 const page = ref(1);
 const size = ref(10);
 const total = ref(null);
@@ -112,12 +115,30 @@ const handleCurrentChange = (val) => {
   getAllArticleList();
 };
 // 查看事件
+const router = useRouter();
 const onShowClick = (row) => {
+  router.push(`/article/${row._id}`);
   console.log(row);
 };
 // 删除事件
+const i18n = useI18n();
 const onDelClick = (row) => {
-  console.log(row);
+  ElMessageBox.confirm(
+    i18n.t("msg.article.dialogTitle1") +
+      row.title +
+      i18n.t("msg.article.dialogTitle2"),
+    {
+      type: "warning",
+    }
+  ).then(async () => {
+    await delArticle(row._id);
+    ElMessage({
+      type: "success",
+      message: i18n.t("msg.article.removeSuccess"),
+    });
+    getAllArticleList();
+  });
+  // console.log(row);
 };
 </script>
 
