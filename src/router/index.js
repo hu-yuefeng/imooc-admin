@@ -186,7 +186,7 @@ export const publicRoutes = [
           import(/* webpackChunkName: "about" */ "../views/profile"),
         meta: {
           title: "profile",
-          icon: "el-icon-user",
+          icon: "personnel",
         },
       },
       // 404

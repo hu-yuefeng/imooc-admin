@@ -133,6 +133,10 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 $cursor: #fff;
 
+// 处理 input 的白/蓝边
+::v-deep .el-input__inner {
+  box-shadow: none;
+}
 .login-container {
   min-height: 100%;
   width: 100%;
@@ -226,7 +230,7 @@ $cursor: #fff;
   .show-pwd {
     position: absolute;
     right: 10px;
-    top: 7px;
+    top: 10px;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;

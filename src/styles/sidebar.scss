@@ -53,8 +53,13 @@
       overflow: hidden;
     }
 
-    .svg-icon {
+    .svg-icon{
       margin-right: 16px;
+    }
+    .el-menu--collapse{
+      .svg-icon{
+        margin-right: 0px;
+      }
     }
 
     .sub-el-icon {
@@ -150,6 +155,8 @@
     }
   }
 }
+
+
 
 .el-menu--vertical {
   & > .el-menu {

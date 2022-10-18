@@ -10,6 +10,7 @@
     "server": "nodemon index.js --ingore client"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
     "@toast-ui/editor": "^3.0.2",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",

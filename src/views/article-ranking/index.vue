@@ -31,10 +31,13 @@
             :label="item.label"
           >
             <template #default="{ row }">
-              <el-button type="primary" size="mini" @click="onShowClick(row)">{{
-                $t("msg.excel.show")
-              }}</el-button>
-              <el-button type="danger" size="mini" @click="onDelClick(row)">{{
+              <el-button
+                type="primary"
+                size="small"
+                @click="onShowClick(row)"
+                >{{ $t("msg.excel.show") }}</el-button
+              >
+              <el-button type="danger" size="small" @click="onDelClick(row)">{{
                 $t("msg.excel.remove")
               }}</el-button>
             </template>
@@ -52,10 +55,10 @@
         <el-table-column prop="desc" :label="$t('msg.article.desc')" />
         <el-table-column :label="$t('msg.article.action')" width="180">
           <template #default="{ row }">
-            <el-button type="primary" size="mini" @click="onShowClick(row)">{{
+            <el-button type="primary" size="small" @click="onShowClick(row)">{{
               $t("msg.excel.show")
             }}</el-button>
-            <el-button type="danger" size="mini" @click="onDelClick(row)">{{
+            <el-button type="danger" size="small" @click="onDelClick(row)">{{
               $t("msg.excel.remove")
             }}</el-button>
           </template>
